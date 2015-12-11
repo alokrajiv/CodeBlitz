@@ -1,0 +1,8 @@
+{
+      "apps" : [{
+        "name"        : "codeBlitz",
+        "script"      : "hosting/bin/www",
+        "watch"       : "hosting/",
+        "log_date_format"  : "YYYY-MM-DD HH:mm Z",
+      }]
+    }
