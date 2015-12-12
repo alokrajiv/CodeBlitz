@@ -18,7 +18,8 @@ exports.GroupModel = mongoose.model('groupsModel', new mongoose.Schema({
 		groupQuestions: [new mongoose.Schema({ 
 			questionNo: Number,
 			questionTitle: String,
-			questionContent: String
+			questionContent: String,
+			code: String
 		})]
 	},
 	{

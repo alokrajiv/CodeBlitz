@@ -24,7 +24,7 @@ var routes = require('./routes/index');
 var groups = require('./routes/groups');
 
 app.use('/', routes);
-app.use('/api/groups', groups);
+app.use('/api/admin/groups', groups);
 
 //Questions NOT USED ANYMORE!
 var questions = require('./routes/questions');

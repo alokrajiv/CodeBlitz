@@ -1,0 +1,36 @@
+<div class="container" ng-controller="GroupsController as grpCtrl">
+	<em>Groups</em>
+	<table class="table table-bordered table-striped grp-tbl">
+		<tr>
+			<th>DELETE</th>
+			<th>ID</th>
+			<th>No</th>
+			<th>Password</th>
+			<th>Edit-Link</th>
+		</tr>
+		<tr ng-repeat="group in groups | orderBy:'groupNo'">
+			<td ng-click="deleteGroup(group.groupNo)">X</td>
+			<td>{{group._id}}</td>
+			<td>{{group.groupNo}}</td>
+			<td>{{group.groupPassword}}</td>
+			<td>--->|</td>
+		</tr>
+		<tr ng-hide="newGroupIsEmpty()" style="background-color: lightgreen;">
+			<td>NOT-SAVED</td>
+			<td>{{newGroup._id}}</td>
+			<td>{{newGroup.groupNo}}</td>
+			<td>{{newGroup.groupPassword}}</td>
+			<td>NOT-READY</td>
+		</tr>
+	</table>
+	<br>
+	
+	<form>
+		<table class="grp-entry">
+			<tr><td>Add a new Group:</td></tr>
+			<tr><td>Group No:</td><td><input type="text" ng-model="newGroup.groupNo"></td></tr>
+			<tr><td>Group Password:</td><td><input type="text" ng-model="newGroup.groupPassword"></td></tr>
+			<tr><td><button ng-click="addGroup()">ADD</button></td></tr>
+		</table>
+	</form>
+</div>
