@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var db = require('../models/index');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -7,6 +8,11 @@ router.get('/', function(req, res) {
 });
 router.get('/editor', function(req, res) {
   res.send('');
+});
+router.get('/test_channel', function(req, res){
+    db.questionBankModel.find({},function(err, data){
+        res.render('dump', {data: data}); 
+    });
 });
 router.get('/exec/lang/id/:langId', function(req, res){
     var request = require("request");

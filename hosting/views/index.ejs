@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Express</title>
+    <link href="/static/stylesheets/style.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Express</h1>
+    <p>Welcome to our test</p><!-- Wrapper-->
+    <div id="wrapper">
+        <!-- USER INFO-->
+        <div id="userInfo">
+            <h2>User Info</h2>
+            <p><strong>Name:</strong> <span id='userInfoName'></span><br>
+            <strong>Age:</strong> <span id='userInfoAge'></span><br>
+            <strong>Gender:</strong> <span id='userInfoGender'></span><br>
+            <strong>Location:</strong> <span id='userInfoLocation'></span></p>
+        </div><!-- /USER INFO--><!-- USER LIST-->
+        <h2>User List</h2>
+        <div id="userList">
+            <table>
+                <thead>
+                    <tr>
+                        <th>UserName</th>
+                        <th>Email</th>
+                        <th>Delete?</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div><!-- /USER LIST--><!-- ADD USER-->
+        <h2>Add User</h2>
+        <div id="addUser">
+            <fieldset>
+                <input id="inputUserName" placeholder="Username" type=
+                "text"><input id="inputUserEmail" placeholder="Email" type=
+                "text"><br>
+                <input id="inputUserFullname" placeholder="Full Name" type=
+                "text"><input id="inputUserAge" placeholder="Age" type=
+                "text"><br>
+                <input id="inputUserLocation" placeholder="Location" type=
+                "text"><input id="inputUserGender" placeholder="gender" type=
+                "text"><br>
+                <button id="btnAddUser">Add User</button>
+            </fieldset>
+        </div><!-- /ADD USER-->
+    </div><!-- /WRAPPER-->
+    <script src=
+    "http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+    </script>
+    <script src="/static/javascripts/global.js">
+    </script>
+</body>
+</html>
