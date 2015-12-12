@@ -1,8 +1,8 @@
 var app = angular.module('codeBlitzAdminCtrls', []);
 app.controller('BodyController', function ($scope) {
 	this.base = "MOOSA";
-	$scope.currentActive = "group_content";
-	$scope.currentActiveGroupNo = 2;
+	$scope.currentActive = "group_main";
+	$scope.currentActiveGroupNo = 1;
 
 });
 app.controller("GroupsController", function ($scope, $http) {
@@ -28,6 +28,11 @@ app.controller("GroupsController", function ($scope, $http) {
 	function isNormalInteger(str) {
 		var n = ~~Number(str);
 		return String(n) === str && n >= 0;
+	}
+	$scope.editGroup = function(no){
+		console.log($scope.currentActive);
+		$scope.$parent.currentActive = "group_content";
+		$scope.currentActiveGroupNo = parseInt(no);
 	}
 	$scope.addGroup = function () {
 		$scope.newGroup.groupNo = parseInt($scope.newGroup.groupNo);

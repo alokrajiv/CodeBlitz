@@ -13,7 +13,7 @@
 			<td>{{group._id}}</td>
 			<td>{{group.groupNo}}</td>
 			<td>{{group.groupPassword}}</td>
-			<td>--->|</td>
+			<td ng-click="editGroup(group.groupNo)">--->|</td>
 		</tr>
 		<tr ng-hide="newGroupIsEmpty()" style="background-color: lightgreen;">
 			<td>NOT-SAVED</td>
