@@ -19,7 +19,7 @@ app.controller('BodyController', function ($scope, $cookies, $interval, $http) {
 			$scope.liveUpTime = response.data.currTime - response.data.startTime
 			$scope.liveETA = response.data.endTime - response.data.currTime
 		}, function errorCallback(response) {
-			alert(response);
+			console.log("Time-Sync failure occured");
 		});
 	}
 	if (!$cookies.getObject('q_keys'))

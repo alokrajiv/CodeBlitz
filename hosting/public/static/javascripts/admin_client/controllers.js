@@ -5,6 +5,41 @@ app.controller('BodyController', function ($scope) {
 	$scope.currentActiveGroupNo = 1;
 });
 app.controller("GroupsController", function ($scope, $http) {
+	$http({
+				method: 'GET',
+				url: '/time'
+			}).then(function successCallback(response) {
+				console.log(response.data);
+				$scope.startDate = new Date(response.data.startTime)
+				$scope.endDate = new Date(response.data.endTime)
+			}, function errorCallback(response) {
+				alert(response);
+			});
+	$scope.parseStartDate = function(){	
+		$scope.parsedStartDate = Math.floor(new Date($scope.startDate).getTime()/1000);
+	}
+	$scope.parseEndDate = function(){
+		$scope.parsedEndDate = Math.floor(new Date($scope.endDate).getTime()/1000);
+	}
+	$scope.updateTime = function(){
+		$http({
+			method: 'POST',
+			url: '/api/admin/groups/time',
+			data: {
+				"newTime": {
+					"eventName": "CodeBlitz",
+					"startTime": $scope.parsedStartDate,
+					"endTime": $scope.parsedEndDate
+				}
+				
+			}
+		}).then(function successCallback(response) {
+			alert('Time Updated')
+		}, function errorCallback(response) {
+			alert(response);
+			
+		});
+	}
 	$scope.groups = [];
 	$scope.getGroupList = function () {
 		$http({
@@ -14,6 +49,7 @@ app.controller("GroupsController", function ($scope, $http) {
 			$scope.groups = response.data;
 		}, function errorCallback(response) {
 			alert(response);
+			
 		});
 	}
 	$scope.getGroupList();

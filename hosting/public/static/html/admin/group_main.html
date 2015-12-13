@@ -1,5 +1,13 @@
 <div class="container" ng-controller="GroupsController as grpCtrl">
+	
 	<em>Groups</em>
+	<div class="container">
+		<br><input type="text" size=40 ng-model="startDate">&nbsp;<button ng-click="parseStartDate()">TRY</button>
+		<br>
+		<input type="text"  size=40 ng-model="endDate">&nbsp;<button ng-click="parseEndDate()">TRY</button>
+		<br> PREVIEW: <br>Start @  {{parsedStartDate}} and End @ {{parsedEndDate}} <button ng-click="updateTime()">UPDATE</button>
+	</div>
+	<br>
 	<table class="table table-bordered table-striped grp-tbl">
 		<tr>
 			<th>DELETE</th>
@@ -24,13 +32,29 @@
 		</tr>
 	</table>
 	<br>
-	
+
 	<form>
 		<table class="space-tbl">
-			<tr><td>Add a new Group:</td></tr>
-			<tr><td>Group No:</td><td><input type="text" ng-model="newGroup.groupNo"></td></tr>
-			<tr><td>Group Password:</td><td><input type="text" ng-model="newGroup.groupPassword"></td></tr>
-			<tr><td><button ng-click="addGroup()">ADD</button></td></tr>
+			<tr>
+				<td>Add a new Group:</td>
+			</tr>
+			<tr>
+				<td>Group No:</td>
+				<td>
+					<input type="text" ng-model="newGroup.groupNo">
+				</td>
+			</tr>
+			<tr>
+				<td>Group Password:</td>
+				<td>
+					<input type="text" ng-model="newGroup.groupPassword">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button ng-click="addGroup()">ADD</button>
+				</td>
+			</tr>
 		</table>
 	</form>
 </div>
