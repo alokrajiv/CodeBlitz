@@ -4,12 +4,14 @@
 	<table class="border-it space-tbl">
 			<tr><td><b>GROUP NO:</b></td><td>{{group.groupNo}}</td></tr>
 			<tr><td><b>GROUP PASSWORD:</b></td><td>{{group.groupPassword}}</td></tr>
+			
+			<tr><td><b>GROUP PASSWORD:</b></td><td>{{group.groupPassword}}</td></tr>
 	</table>
 	<div class="question-div border-it" ng-repeat="question in group.groupQuestions | orderBy: 'questionNo'">
 		<button ng-click="deleteQuestion(question.questionNo)">DELETE THIS QUESTION</button>
-		<h4><u>Question No: </u></h4><em>{{question.questionNo}}</em>
-		<h4><u>Question Title: </u></h4><em>{{question.questionTitle}}</em>
-		<h5><u>Question Content: </u></h5><em>{{question.questionContent}}</em>
+		<h4><u>Question No: </u></h4>{{question.questionNo}}
+		<h4><u>Question Title: </u></h4>{{question.questionTitle}}
+		<h4><u>Question Content: </u></h4><span style="style="white-space: pre;"">{{question.questionContent}}</span>
 		<br><h5><u>Code: </u></h5> 
 		<pre>{{question.code}}</pre>
 	</div>
