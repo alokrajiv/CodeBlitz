@@ -43,5 +43,15 @@ router.post('/group/data/no/:no', function(req, res) {
     });
 });
 
+router.post('/group/data/no/:no', function(req, res) {
+  db.GroupModel.findOne({groupNo: req.params.no},function(err, data){
+        if(req.body.q_keys.indexOf(data.groupPassword)>-1)
+            res.json(data);
+        else{
+            res.status(401);
+            res.json({messg: "Correct password not found"});
+        }
+    });
+});
 
 module.exports = router;

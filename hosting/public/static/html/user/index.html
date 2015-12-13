@@ -4,13 +4,20 @@
 <head>
 	<title></title>
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous">
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
+	crossorigin="anonymous">
 	<link rel="stylesheet" href="/static/stylesheets/style.css">
 </head>
 
 <body ng-controller="BodyController as bodyCtrl">
+	<div style="background-color: #999; z-index: 10; position: fixed; right: 20px; top: 20px;padding:1%">
+		&nbsp;<b style="color:yellow">{{liveUpTime | secondsToDateTime | date:'HH:mm:ss'}} over</b> <br>
+		-----------------
+		<br> &nbsp;<b style="color:white">{{liveETA | secondsToDateTime | date:'HH:mm:ss'}} left</b>
+	</div>
 	<ng-view></ng-view>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
@@ -21,5 +28,6 @@
 <script src="/static/javascripts/user_client/controllers.js"></script>
 <script src="/static/javascripts/user_client/directives.js"></script>
 <script src="/static/javascripts/user_client/routes.js"></script>
+<script src="/static/javascripts/user_client/filters.js"></script>
 
 </html>

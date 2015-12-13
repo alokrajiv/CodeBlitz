@@ -12,10 +12,23 @@ router.get('/game', function(req, res) {
 router.get('/editor', function(req, res) {
   res.send('');
 });
-router.get('/test_channel', function(req, res){
-    db.questionBankModel.find({},function(err, data){
-        res.render('dump', {data: data}); 
-    });
+router.get('/time', function(req, res){
+    db.TimeManagerModel.findOne({eventName: "CodeBlitz"}, function(err, data){ 
+        if(!err && data){
+            res.json({
+                startTime: data.startTime.getTime(),
+                endTime: data.endTime.getTime(),
+                currTime: Math.floor((new Date).getTime()/1000)
+            });
+        }
+        else{
+            res.json({
+                startTime: (new Date).getTime()/1000,
+                endTime: (new Date).getTime()/1000,
+                currTime: Math.floor((new Date).getTime()/1000)
+            });
+        }
+    })
 });
 router.get('/exec/lang/id/:langId', function(req, res){
     var request = require("request");

@@ -1,1 +1,1 @@
-var app = angular.module('codeBlitzUser', ['codeBlitzUserCtrls','codeBlitzUserDrtvs', 'codeBlitzUserRoute']);
+var app = angular.module('codeBlitzUser', ['codeBlitzUserCtrls','codeBlitzUserDrtvs', 'codeBlitzUserRoute', 'codeBlitzUserFilters']);

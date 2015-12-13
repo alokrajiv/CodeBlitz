@@ -26,7 +26,15 @@ exports.GroupModel = mongoose.model('groupsModel', new mongoose.Schema({
 		collection: 'groupCollection'
 	}
 ));
-
+exports.TimeManagerModel = mongoose.model('TimeManagerModel', new mongoose.Schema({ 
+		eventName: String,
+		startTime: Date,
+		endTime: Date
+	},
+	{
+		collection: 'timeManagerCollection'
+	}
+));
 //QuestionBankModel NOT USED ANYMORE
 /*
 exports.QuestionBankModel = mongoose.model('questionBankModel', new mongoose.Schema({ 

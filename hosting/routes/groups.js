@@ -121,4 +121,26 @@ router.delete('/no/:no1/question/no/:no2', function(req, res) {
 		
     });
 });
+
+
+router.post('/time', function(req, res) {
+  var toSaveObj = new db.TimeManagerModel({
+        eventName: req.body.newTime.eventName,
+		startTime: req.body.newTime.startTime,
+		endTime: req.body.newTime.endTime
+    });
+    var upsertData = toSaveObj.toObject();
+    delete upsertData._id;
+    db.TimeManagerModel.update({eventName: toSaveObj.eventName}, upsertData, {upsert: true}, function(err, data){
+        if(err){
+            res.status(500);
+            res.render('error', {message:"time change failed", error: err});
+        }
+        else{
+            res.json(data);
+        }
+    });
+});
+
+
 module.exports = router;

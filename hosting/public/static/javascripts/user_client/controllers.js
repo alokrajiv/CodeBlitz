@@ -1,7 +1,29 @@
 var app = angular.module('codeBlitzUserCtrls', ['ngCookies']);
-app.controller('BodyController', function ($scope, $cookies) {
+app.controller('BodyController', function ($scope, $cookies, $interval, $http) {
+	$scope.currentActive = "group_main";
+	$scope.currentActiveGroupNo = 1;
+	$scope.liveUpTime = 0;
+	$scope.liveETA = 7200;
+	var liveETAIntervalTriggerLocal = $interval(localTimeUpdate, 1000);
+	var liveETAIntervalTriggerServer = $interval(serverTimeSync, 5000);
+	function localTimeUpdate(){
+		$scope.liveUpTime++;
+		$scope.liveETA--;
+	}
+	function serverTimeSync(){
+		$http({
+			method: 'GET',
+			url: '/time'
+		}).then(function successCallback(response) {
+			console.log(response.data);
+			$scope.liveUpTime = response.data.currTime - response.data.startTime
+			$scope.liveETA = response.data.endTime - response.data.currTime
+		}, function errorCallback(response) {
+			alert(response);
+		});
+	}
 	if (!$cookies.getObject('q_keys'))
-		$cookies.putObject('q_keys', { data: [] })
+		$cookies.putObject('q_keys', { data: [] });
 
 });
 app.controller("HomeController", function ($scope, $http, $cookies, $window) {
