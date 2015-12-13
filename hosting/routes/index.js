@@ -4,7 +4,10 @@ var db = require('../models/index');
 
 /* GET home page. */
 router.get('/admin', function(req, res) {
-  res.redirect('/static/html/admin/');;
+  res.redirect('/static/html/admin/');
+});
+router.get('/game', function(req, res) {
+  res.redirect('/static/html/user/');
 });
 router.get('/editor', function(req, res) {
   res.send('');
