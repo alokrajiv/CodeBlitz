@@ -41,8 +41,12 @@ app.controller("HomeController", function ($scope, $http, $cookies, $window) {
 	$scope.getGroupList();
 });
 
-app.controller("DetailController", function ($scope, $http, $routeParams, $cookies) {
+app.controller("DetailController", function ($scope, $http, $routeParams, $cookies, $location) {
 	$scope.cookieData = $cookies.getObject('q_keys').data;
+	$scope.activeQuestionNo = 1;
+	$scope.changeQuestion = function(no){
+		$scope.activeQuestionNo = no;
+	}
 	$scope.no = $routeParams.no;
 	$scope.group = [];
 	$scope.getGroupContent = function () {
@@ -52,10 +56,12 @@ app.controller("DetailController", function ($scope, $http, $routeParams, $cooki
 			data: { q_keys: $cookies.getObject('q_keys').data }
 		}).then(function successCallback(response) {
 			$scope.group = response.data;
-			console.log($scope.group);
 		}, function errorCallback(response) {
 			alert(response);
 		});
 	}
+	$scope.go = function ( path ) {
+		$location.path( path );
+	};
 	$scope.getGroupContent();
 });

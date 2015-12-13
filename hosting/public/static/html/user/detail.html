@@ -1,9 +1,17 @@
-<h1>DETAIL PAGE</h1>
-
-<div class="question-div border-it" ng-repeat="question in group.groupQuestions | orderBy: 'questionNo'">
-		<h4><u>Question No: </u></h4><em>{{question.questionNo}}</em>
-		<h4><u>Question Title: </u></h4><em>{{question.questionTitle}}</em>
-		<h5><u>Question Content: </u></h5><em>{{question.questionContent}}</em>
+<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-warning btn-sm" ng-click="go('/home')">&#8592; BACK</button> 
+	<div class="container">
+	<h1 style="text-align:center;">Group No. {{no}}</h1>
+	<ul class="nav nav-pills">
+		<li ng-repeat="question in group.groupQuestions | orderBy: 'questionNo'" ng-class="{active:activeQuestionNo==question.questionNo}">
+			<a ng-click="changeQuestion(question.questionNo)">Question No. {{question.questionNo}}</a>
+		</li>
+	</ul>
+	<div class="question-div border-it" ng-repeat="question in group.groupQuestions | orderBy: 'questionNo'" ng-show="activeQuestionNo==question.questionNo">
+		<h4><u>Question No: </u></h4>{{question.questionNo}}
+		<h4><u>Question Title: </u></h4>{{question.questionTitle}}
+		<h5><u>Question Content: </u></h5>{{question.questionContent}}
 		<br><h5><u>Code: </u></h5> 
 		<pre>{{question.code}}</pre>
+	</div>
 </div>

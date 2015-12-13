@@ -1,6 +1,6 @@
 <div class="container">
 	<div>
-		<h1>MAIN PAGE</h1>
+		<h1 style="text-align:center">CodeBlitz</h1>
 		<form class="form-inline">
 			<div class="form-group">
 				<label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
@@ -12,11 +12,11 @@
 			<button class="btn btn-danger" ng-click="clearKeyChain()">CLEAR KEY-CHAIN</button>
 		</form>
 		<br>
-		<em>Current Key-Chain: </em><span ng-repeat="one in keyChain track by $index"><span class="label label-info">{{one}} </span> :</span>
+		<em>Current Key-Chain: </em><span ng-repeat="one in keyChain track by $index"><span class="label label-info">{{one}} </span> &nbsp;</span>
 		
 		<h3>OPENED GROUPS</h3>
 		<table class="space-tbl">
-			<tr ng-repeat="one in groups.open">
+			<tr ng-repeat="one in groups.open | orderBy: groupNo">
 				<td>
 					<div class="alert alert-info">
 						<a href="#/user/show/{{one.groupNo}}"><strong>Group No. {{one.groupNo}}</strong></a>
@@ -27,7 +27,7 @@
 		
 		<h3>LOCKED GROUPS</h3>
 		<table class="space-tbl">
-		<tr ng-repeat="one in groups.locked">
+		<tr ng-repeat="one in groups.locked | orderBy: 'groupNo'">
 			<td>
 				<div class="alert alert-danger">
 					<strong>Group No. {{one.groupNo}}</strong>

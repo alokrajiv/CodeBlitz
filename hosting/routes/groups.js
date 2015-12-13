@@ -14,6 +14,20 @@ router.get('/no/:no', function(req, res) {
         res.json(data); 
     });
 });
+router.post('/changePassword/no/:no', function(req, res) {
+    db.GroupModel.findOne({groupNo: req.params.no},function(err, data){
+        data.groupPassword = req.body.newPassword ;
+		data.save(function(err, data){
+			if(err){
+				res.status(500);
+				res.render('error', {message:"password change failed", error: err});
+			}
+			else{
+				res.json(data);
+			}
+		})
+    });
+});
 router.get('/no/:no1/question/no/:no2', function(req, res) {
     db.GroupModel.find({groupNo: req.params.no1, 'groupQuestions.questionNo': req.params.no2},function(err, data){
 		res.json(data);
