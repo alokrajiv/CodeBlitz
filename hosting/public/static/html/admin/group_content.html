@@ -11,32 +11,32 @@
 		<button ng-click="deleteQuestion(question.questionNo)">DELETE THIS QUESTION</button>
 		<h4><u>Question No: </u></h4>{{question.questionNo}}
 		<h4><u>Question Title: </u></h4>{{question.questionTitle}}
-		<h4><u>Question Content: </u></h4><pre>{{question.questionContent}}</pre>
+		<h4><u>Question Content: </u></h4><span style="white-space: pre;">{{newQuestion.questionContent}}</span>
 		<br><h4><u>Code: </u></h4> 
 		<pre>{{question.code}}</pre>
 	</div>
-	
-	
 	
 	<div class="question-div border-it" >
 		<h3>Preview:</h3>
 		<h4><u>Question No: </u></h4>{{newQuestion.questionNo}}
 		<h4><u>Question Title: </u></h4>{{newQuestion.questionTitle}}
-		<h4><u>Question Content: </u></h4><pre>{{newQuestion.questionContent}}</pre>
+		<h4><u>Question Content: </u></h4><span style="white-space: pre;">{{newQuestion.questionContent}}</span>
 		<br><h4><u>Code: </u></h4> 
 		<pre>{{newQuestion.code}}</pre>
 	</div>
+	
 	<form>
 		<table class="space-tbl">
 			<tr><td>Add a new Question:</td></tr>
 			<tr><td>Question No:</td><td><input type="text" ng-model="newQuestion.questionNo"></td></tr>
 			<tr><td>Question Title:</td><td><input type="text" ng-model="newQuestion.questionTitle"></td></tr>
-			<tr><td>Question Content:</td><td><input type="text" ng-model="newQuestion.questionContent"></td></tr>
+			<tr><td>Question Content:</td><td><textarea ng-model="newQuestion.questionContent"></textarea></td></tr>
+			<tr><td>Code:</td><td><textarea ng-model="newQuestion.code"></textarea></td></tr>
 			<tr><td><button ng-click="addQuestion()">ADD</button></td></tr>
-			<tr><td>Code:</td><td><textarea ng-model="newQuestion.code"></td></tr>
 			
 		</table>
 	</form>
+	
 	
 	
 </div>

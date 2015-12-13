@@ -10,7 +10,7 @@
 	<div class="question-div border-it" ng-repeat="question in group.groupQuestions | orderBy: 'questionNo'" ng-show="activeQuestionNo==question.questionNo">
 		<h4><u>Question No: </u></h4>{{question.questionNo}}
 		<h4><u>Question Title: </u></h4>{{question.questionTitle}}
-		<h4><u>Question Content: </u></h4><pre>{{question.questionContent}}</pre>
+		<h4><u>Question Content: </u></h4><span style="white-space: pre;">{{newQuestion.questionContent}}</span>
 		<br><h4><u>Code: </u></h4> 
 		<pre>{{question.code}}</pre>
 	</div>
