@@ -12,8 +12,11 @@
     "ejs": "^2.3.4",
     "express": "~4.12.4",
     "jade": "~1.9.2",
+    "kerberos": "0.0.17",
     "mongoose": "^4.3.1",
     "morgan": "~1.5.3",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
     "request": "^2.67.0",
     "serve-favicon": "~2.2.1"
   }

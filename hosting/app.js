@@ -1,10 +1,12 @@
+/* global BasicStrategy */
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var passport = require('passport');
+var BasicStrategy = require('passport-http').BasicStrategy;
 var app = express();
 
 // view engine setup
@@ -19,12 +21,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+passport.use(new BasicStrategy(
+  function(username, password, done) {
+      if(username == "ieeemtc" && password == "ieeemtc@bitspilani")
+        return done(null, true);
+      else
+        return done(null, false);
+  }
+));
 
 var routes = require('./routes/index');
 var groups = require('./routes/groups');
 
 app.use('/', routes);
-app.use('/api/admin/groups', groups);
+app.use('/api/admin/groups',passport.authenticate('basic', { session: false }), groups);
 
 //Questions NOT USED ANYMORE!
 var questions = require('./routes/questions');

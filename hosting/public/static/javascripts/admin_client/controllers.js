@@ -29,10 +29,12 @@ app.controller("GroupsController", function ($scope, $http) {
 		var n = ~~Number(str);
 		return String(n) === str && n >= 0;
 	}
-	$scope.editGroup = function(no){
-		console.log($scope.currentActive);
+	$scope.editGroup = function (no) {
+		console.log(parseInt(no));
 		$scope.$parent.currentActive = "group_content";
-		$scope.currentActiveGroupNo = parseInt(no);
+		$scope.$parent.currentActiveGroupNo = parseInt(no);
+		$scope.$parent.getGroupContent();
+		console.log($scope.$parent.currentActiveGroupNo);
 	}
 	$scope.addGroup = function () {
 		$scope.newGroup.groupNo = parseInt($scope.newGroup.groupNo);
@@ -41,7 +43,7 @@ app.controller("GroupsController", function ($scope, $http) {
 			$http({
 				method: 'POST',
 				url: '/api/admin/groups/add',
-				data: {newGroup: $scope.newGroup}
+				data: { newGroup: $scope.newGroup }
 			}).then(function successCallback(response) {
 				$scope.groups = response.data;
 				$scope.newGroup = null;
@@ -75,17 +77,22 @@ app.controller("GroupsController", function ($scope, $http) {
 
 app.controller("GroupContentController", function ($scope, $http) {
 	$scope.group = {};
-	$scope.getGroupContent = function () {
+	$scope.groupList = function () {
+		$scope.$parent.currentActive = "group_main";
+	}
+	$scope.$parent.getGroupContent = function () {
+		
+		console.log("getting" + $scope.$parent.currentActiveGroupNo);
 		$http({
 			method: 'GET',
-			url: '/api/admin/groups/no/' + $scope.currentActiveGroupNo
+			url: '/api/admin/groups/no/' + $scope.$parent.currentActiveGroupNo
 		}).then(function successCallback(response) {
 			$scope.group = response.data;
+			console.log($scope.group);
 		}, function errorCallback(response) {
 			alert(response);
 		});
 	}
-	$scope.getGroupContent();
 	$scope.newQuestion = null;
 	$scope.newQuestionIsEmpty = function () {
 		if ($scope.newQuestion)
@@ -103,8 +110,8 @@ app.controller("GroupContentController", function ($scope, $http) {
 		if (userConfirmDelete) {
 			$http({
 				method: 'POST',
-				url: '/api/admin/groups/no/'+ $scope.group.groupNo +'/question/add',
-				data: {newQuestion: $scope.newQuestion}
+				url: '/api/admin/groups/no/' + $scope.group.groupNo + '/question/add',
+				data: { newQuestion: $scope.newQuestion }
 			}).then(function successCallback(response) {
 				$scope.groups = response.data;
 				$scope.newQuestion = null;
@@ -122,12 +129,12 @@ app.controller("GroupContentController", function ($scope, $http) {
 		if (userConfirmDelete) {
 			$http({
 				method: 'DELETE',
-				url: '/api/admin/groups/no/'+ $scope.group.groupNo +'/question/no/' + no
+				url: '/api/admin/groups/no/' + $scope.group.groupNo + '/question/no/' + no
 			}).then(function successCallback(response) {
 				$scope.groups = response.data;
 				$scope.getGroupContent();
 			}, function errorCallback(response) {
-				alert("ERROR!!! -->"+ response);
+				alert("ERROR!!! -->" + response);
 			});
 		}
 		else {

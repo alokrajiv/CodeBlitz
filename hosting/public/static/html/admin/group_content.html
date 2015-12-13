@@ -1,6 +1,11 @@
 <div class="container" ng-controller="GroupContentController as grpCntCtrl">
-	<em>Group Data</em>
-	<div class="question-div" ng-repeat="question in group.groupQuestions | orderBy: 'questionNo'">
+	<div><button ng-click="groupList()"><-- GO BACK TO GROUPS LIST</button></div>
+	<h3>Group Content :</h3>
+	<table class="border-it space-tbl">
+			<tr><td><b>GROUP NO:</b></td><td>{{group.groupNo}}</td></tr>
+			<tr><td><b>GROUP PASSWORD:</b></td><td>{{group.groupPassword}}</td></tr>
+	</table>
+	<div class="question-div border-it" ng-repeat="question in group.groupQuestions | orderBy: 'questionNo'">
 		<button ng-click="deleteQuestion(question.questionNo)">DELETE THIS QUESTION</button>
 		<h4><u>Question No: </u></h4><em>{{question.questionNo}}</em>
 		<h4><u>Question Title: </u></h4><em>{{question.questionTitle}}</em>
@@ -10,7 +15,7 @@
 	</div>
 	
 	<form>
-		<table class="grp-entry">
+		<table class="space-tbl">
 			<tr><td>Add a new Question:</td></tr>
 			<tr><td>Question No:</td><td><input type="text" ng-model="newQuestion.questionNo"></td></tr>
 			<tr><td>Question Title:</td><td><input type="text" ng-model="newQuestion.questionTitle"></td></tr>

@@ -3,8 +3,8 @@ var router = express.Router();
 var db = require('../models/index');
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+router.get('/admin', function(req, res) {
+  res.redirect('/static/html/admin/');;
 });
 router.get('/editor', function(req, res) {
   res.send('');
