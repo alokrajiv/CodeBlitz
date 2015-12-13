@@ -1,0 +1,39 @@
+<div class="container">
+	<div>
+		<h1>MAIN PAGE</h1>
+		<form class="form-inline">
+			<div class="form-group">
+				<label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+				<div class="input-group">
+				<input type="text" class="form-control" ng-model="new_q_key">
+				</div>
+			</div>
+			<button class="btn btn-primary" ng-click="addQKey()">ADD KEY</button>
+			<button class="btn btn-danger" ng-click="clearKeyChain()">CLEAR KEY-CHAIN</button>
+		</form>
+		<br>
+		<em>Current Key-Chain: </em><span ng-repeat="one in keyChain track by $index"><span class="label label-info">{{one}} </span> :</span>
+		
+		<h3>OPENED GROUPS</h3>
+		<table class="space-tbl">
+			<tr ng-repeat="one in groups.open">
+				<td>
+					<div class="alert alert-info">
+						<a href="#/user/show/{{one.groupNo}}"><strong>Group No. {{one.groupNo}}</strong></a>
+					</div>
+				</td>
+			</tr>
+		</table>
+		
+		<h3>LOCKED GROUPS</h3>
+		<table class="space-tbl">
+		<tr ng-repeat="one in groups.locked">
+			<td>
+				<div class="alert alert-danger">
+					<strong>Group No. {{one.groupNo}}</strong>
+				</div>
+			</td>
+		</tr>
+		</table>
+	</div>
+</div>

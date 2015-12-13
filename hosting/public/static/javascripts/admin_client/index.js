@@ -1,1 +1,1 @@
-var app = angular.module('codeBlitzAdmin', ['codeBlitzAdminCtrls','codeBlitzAdminDrtvs']);
+var app = angular.module('codeBlitzAdmin', ['codeBlitzAdminDrtvs','codeBlitzAdminCtrls']);

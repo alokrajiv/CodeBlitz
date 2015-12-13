@@ -32,8 +32,10 @@ passport.use(new BasicStrategy(
 
 var routes = require('./routes/index');
 var groups = require('./routes/groups');
+var games = require('./routes/games');
 
 app.use('/', routes);
+app.use('/api/games', games);
 app.use('/api/admin/groups',passport.authenticate('basic', { session: false }), groups);
 
 //Questions NOT USED ANYMORE!
