@@ -11,11 +11,21 @@
 		<button ng-click="deleteQuestion(question.questionNo)">DELETE THIS QUESTION</button>
 		<h4><u>Question No: </u></h4>{{question.questionNo}}
 		<h4><u>Question Title: </u></h4>{{question.questionTitle}}
-		<h4><u>Question Content: </u></h4><span style="style="white-space: pre;"">{{question.questionContent}}</span>
-		<br><h5><u>Code: </u></h5> 
+		<h4><u>Question Content: </u></h4><pre>{{question.questionContent}}</pre>
+		<br><h4><u>Code: </u></h4> 
 		<pre>{{question.code}}</pre>
 	</div>
 	
+	
+	
+	<div class="question-div border-it" >
+		<h3>Preview:</h3>
+		<h4><u>Question No: </u></h4>{{newQuestion.questionNo}}
+		<h4><u>Question Title: </u></h4>{{newQuestion.questionTitle}}
+		<h4><u>Question Content: </u></h4><pre>{{newQuestion.questionContent}}</pre>
+		<br><h4><u>Code: </u></h4> 
+		<pre>{{newQuestion.code}}</pre>
+	</div>
 	<form>
 		<table class="space-tbl">
 			<tr><td>Add a new Question:</td></tr>
@@ -27,4 +37,6 @@
 			
 		</table>
 	</form>
+	
+	
 </div>
