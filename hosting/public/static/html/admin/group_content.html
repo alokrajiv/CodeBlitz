@@ -5,7 +5,8 @@
 			<tr><td><b>GROUP NO:</b></td><td>{{group.groupNo}}</td></tr>
 			<tr><td><b>GROUP PASSWORD:</b></td><td>{{group.groupPassword}}</td></tr>
 			
-			<tr><td><b>GROUP PASSWORD:</b></td><td>{{group.groupPassword}}</td></tr>
+			<tr><td><b>CHANGE PASSWORD:</b></td><td><input type="text" ng-model="newPassword"></td></tr>
+			<tr><td><button ng-click="updatePassword()">UPDATE PASSWORD</button></td><td></td></tr>
 	</table>
 	<div class="question-div border-it" ng-repeat="question in group.groupQuestions | orderBy: 'questionNo'">
 		<button ng-click="deleteQuestion(question.questionNo)">DELETE THIS QUESTION</button>

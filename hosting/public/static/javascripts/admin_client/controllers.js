@@ -80,6 +80,20 @@ app.controller("GroupContentController", function ($scope, $http) {
 	$scope.groupList = function () {
 		$scope.$parent.currentActive = "group_main";
 	}
+	$scope.newPassword = "";
+	$scope.updatePassword = function(){
+		$http({
+			method: 'POST',
+			url: '/api/admin/groups/changePassword/no/' + $scope.$parent.currentActiveGroupNo,
+			data: { "newPassword": $scope.newPassword}
+		}).then(function successCallback(response) {
+			$scope.group = response.data;
+			$scope.$parent.getGroupContent();
+			$scope.newPassword = "";
+		}, function errorCallback(response) {
+			alert(response);
+		});
+	}
 	$scope.$parent.getGroupContent = function () {
 		
 		console.log("getting" + $scope.$parent.currentActiveGroupNo);
