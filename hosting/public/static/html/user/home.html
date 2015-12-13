@@ -16,7 +16,7 @@
 		
 		<h3>OPENED GROUPS</h3>
 		<table class="space-tbl">
-			<tr ng-repeat="one in groups.open | orderBy: groupNo">
+			<tr ng-repeat="one in groups.open | orderBy: 'groupNo''">
 				<td>
 					<div class="alert alert-info">
 						<a href="#/user/show/{{one.groupNo}}"><strong>Group No. {{one.groupNo}}</strong></a>
