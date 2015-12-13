@@ -1,7 +1,8 @@
 var app = angular.module('codeBlitzAdminCtrls', []);
 app.controller('BodyController', function ($scope) {
 	this.base = "MOOSA";
-
+	$scope.currentActive = "group_main";
+	$scope.currentActiveGroupNo = 1;
 });
 app.controller("GroupsController", function ($scope, $http) {
 	$scope.groups = [];
