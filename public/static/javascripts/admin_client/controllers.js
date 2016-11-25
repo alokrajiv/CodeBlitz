@@ -10,8 +10,10 @@ app.controller("GroupsController", function ($scope, $http) {
 				url: '/time'
 			}).then(function successCallback(response) {
 				console.log(response.data);
-				$scope.startDate = new Date(response.data.startTime*1000)
-				$scope.endDate = new Date(response.data.endTime*1000)
+				$scope.startDate = new Date(response.data.startTime*1000);
+				$scope.endDate = new Date(response.data.endTime*1000);
+				$scope.parseStartDate();
+				$scope.parseEndDate();				
 			}, function errorCallback(response) {
 				alert(response);
 			});

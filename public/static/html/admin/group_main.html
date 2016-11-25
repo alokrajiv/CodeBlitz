@@ -1,27 +1,30 @@
-<div class="container" ng-controller="GroupsController as grpCtrl">
-	
-	<em>Groups</em>
+<div class="container" style="margin-top:2%" ng-controller="GroupsController as grpCtrl">
+	<div style="margin: auto;width: 50%;"><h1>ADMIN DASH</h1> </div>
+	<hr>
+	<h2>1) TIME:</h2>
 	<div class="container">
-		<br><input type="text" size=40 ng-model="startDate">&nbsp;<button ng-click="parseStartDate()">TRY</button>
+		<br><input type="text" size=40 ng-model="startDate">&nbsp;<button class="btn btn-success" ng-click="parseStartDate()">LOAD-START-TIME</button><br />
 		<br>
-		<input type="text"  size=40 ng-model="endDate">&nbsp;<button ng-click="parseEndDate()">TRY</button>
-		<br> PREVIEW: <br>Start @  {{parsedStartDate}} and End @ {{parsedEndDate}} <button ng-click="updateTime()">UPDATE</button>
+		<input type="text"  size=40 ng-model="endDate">&nbsp;<button class="btn btn-success" ng-click="parseEndDate()">LOAD-END-TIME</button>
+		<br /><br /> <strong>PREVIEW:</strong> <br><strong>START-TIME:</strong> @  {{parsedStartDate}} sec <br /> &nbsp;&nbsp;&nbsp;<strong>END-TIME:</strong> @ {{parsedEndDate}} sec <br /><button class="btn btn-danger" ng-click="updateTime()">UPDATE</button><---(This will broadcast timer update to all connected game clients LIVE!!)
 	</div>
-	<br>
+	<br /><hr>
+
+	<h2>2) GROUPS:</h2>
 	<table class="table table-bordered table-striped grp-tbl">
 		<tr>
-			<th>DELETE</th>
-			<th>ID</th>
+			<th>DELETE-BUTTON</th>
+			<th>COMPUTER-ID</th>
 			<th>No</th>
-			<th>Password</th>
-			<th>Edit-Link</th>
+			<th>PASSWORD</th>
+			<th>EDIT-Button</th>
 		</tr>
 		<tr ng-repeat="group in groups | orderBy:'groupNo'">
-			<td ng-click="deleteGroup(group.groupNo)">X</td>
+			<td ng-click="deleteGroup(group.groupNo)"><button class="btn btn-danger">X</button></td>
 			<td>{{group._id}}</td>
 			<td>{{group.groupNo}}</td>
 			<td>{{group.groupPassword}}</td>
-			<td ng-click="editGroup(group.groupNo)">--->|</td>
+			<td ng-click="editGroup(group.groupNo)"><button class="btn btn-info">--->|</button></td>
 		</tr>
 		<tr ng-hide="newGroupIsEmpty()" style="background-color: lightgreen;">
 			<td>NOT-SAVED</td>
@@ -52,9 +55,10 @@
 			</tr>
 			<tr>
 				<td>
-					<button ng-click="addGroup()">ADD</button>
+					<button class="btn btn-success" ng-click="addGroup()">ADD</button>
 				</td>
 			</tr>
 		</table>
 	</form>
+	<br /><hr>
 </div>
