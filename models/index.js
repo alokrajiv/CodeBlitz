@@ -1,6 +1,10 @@
 var mongoose = require ('mongoose'),
 	exports = module.exports = {};
-mongoose.connect('mongodb://localhost/codeblitz_db')
+
+var config = require('../config'),
+	mlab = config.mlab;
+	
+mongoose.connect('mongodb://' + mlab.user + ':' + mlab.passwd + '@ds050879.mlab.com:50879/' + mlab.db);
 
 exports.GroupModel = mongoose.model('groupsModel', new mongoose.Schema({ 
 		groupNo: {

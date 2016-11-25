@@ -8,7 +8,8 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var BasicStrategy = require('passport-http').BasicStrategy;
 var app = express();
-
+var config = require('./config'),
+    admin_creds = config.admin_creds;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -23,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 passport.use(new BasicStrategy(
   function(username, password, done) {
-      if(username == "ieeemtc" && password == "ieeemtc@bitspilani")
+      if(username === admin_creds.username && password === admin_creds.passwd)
         return done(null, true);
       else
         return done(null, false);
